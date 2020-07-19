@@ -4,7 +4,7 @@ import { GET_TODOS } from './todoTypes';
 
 const INITIAL_STATE = {
   todos: [],
-  process: false,
+  processing: false,
   updating: false
 }
 

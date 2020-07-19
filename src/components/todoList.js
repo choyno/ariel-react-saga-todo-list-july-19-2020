@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
-import useDebounce from '../hooks/useDebounce';
+import React, { useState, useEffect } from 'react';
+
+import {delay } from 'redux-saga/effects'
 
 import useTodo from '../hooks/useTodo';
 import { useDispatch } from 'react-redux';
@@ -9,23 +10,24 @@ const TodoList = () => {
   const dispatch = useDispatch();
 
   const { todos:getTodosList, getTodos } = useTodo();
-  const { todos } = getTodosList || []
+  const { todos, processing } = getTodosList || []
+  const [process, setProcess] = useState(processing);
 
   useEffect(() => {
-    console.log("herer");
-    console.log(getTodosList);
-
-  },[ getTodosList, getTodos ]);
+    setProcess(processing);
+  },[ getTodosList, getTodos, processing ]);
 
   useEffect(() => {
-    getTodos({isDeleted: false, process: false});
+    setProcess(true);
+    getTodos({isDeleted: false });
   },[ dispatch ]);
 
   return (
     <div>
       <h1> MY TO DO LIST </h1>
+      { process ? "LOADING....." : '' }
      <hr/>
-      { todos && todos.map((todo) => (
+      { !process && todos.map((todo) => (
         <div key={`${todo.id}`}>
            ID: { todo.id } / TITLE:  { todo.title }
           <hr/>

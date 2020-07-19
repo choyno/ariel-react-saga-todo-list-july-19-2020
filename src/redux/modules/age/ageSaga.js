@@ -5,7 +5,6 @@ import { INCREASE_AGE } from './ageTypes';
 
 // reqFunction   (DONT DELETE THIS LINE: USED FOR BATTLECRY DUCK GENERATOR)
 function* decreaseAgeReq(data) {
-  yield delay(1000);
   return yield put({type: "AGE_UP_ASYNC", data: { age: data.age - 1, year: data.year - 1}})
 }
 
