@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import useTodo from '../hooks/useTodo';
 import { useDispatch } from 'react-redux';
 
+import TodoForm from './todoForm';
+
 const TodoList = () => {
 
   const dispatch = useDispatch();
@@ -34,6 +36,8 @@ const TodoList = () => {
           <br/>
         </div>
       ))}
+
+      <TodoForm />
     </div>
   )
 }

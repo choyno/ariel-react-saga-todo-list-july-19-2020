@@ -44,3 +44,9 @@
   border: 3px solid #f3f3f3;
   padding: 10px;
 }
+
+.todo-label {
+ float: left;
+ width: 100%;
+ text-align: left;
+}
