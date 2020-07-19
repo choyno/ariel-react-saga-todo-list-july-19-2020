@@ -8,21 +8,31 @@ const TodoList = () => {
 
   const dispatch = useDispatch();
 
-  const { getTodos } = useTodo();
-  const { todos } = getTodos || {}
+  const { todos:getTodosList, getTodos } = useTodo();
+  const { todos } = getTodosList || []
 
   useEffect(() => {
-    console.log(todos);
-  },[ todos ]);
+    console.log("herer");
+    console.log(getTodosList);
+
+  },[ getTodosList, getTodos ]);
 
   useEffect(() => {
-    getTodos({isDeleted: false});
+    getTodos({isDeleted: false, process: false});
   },[ dispatch ]);
 
   return (
-    <>
-      hello
-    </>
+    <div>
+      <h1> MY TO DO LIST </h1>
+     <hr/>
+      { todos && todos.map((todo) => (
+        <div key={`${todo.id}`}>
+           ID: { todo.id } / TITLE:  { todo.title }
+          <hr/>
+          <br/>
+        </div>
+      ))}
+    </div>
   )
 }
 

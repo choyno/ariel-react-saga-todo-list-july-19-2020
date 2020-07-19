@@ -15,7 +15,6 @@ function* getTodosReq(data) {
 export function* getTodos(action) {
   try {
     const { data: { todos } } = yield call(getTodosReq, action.payload);
-    console.log(todos);
     yield put({ type: `${GET_TODOS}_SUCCESS`, payload: todos })
   } catch(e) {
     yield put({ type: `${GET_TODOS}_FAIL`, payload: e.response })

@@ -17,7 +17,6 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
     case `${GET_TODOS}_SUCCESS`:
       // Perform action
       return {
-        ...state,
         todos: action.payload,
         processing: false,
         updating: false
