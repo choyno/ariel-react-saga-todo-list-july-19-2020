@@ -1,4 +1,4 @@
-import { put, call, delay } from 'redux-saga/effects'
+import { put, call } from 'redux-saga/effects'
 // Actions   (DONT DELETE THIS LINE: USED FOR BATTLECRY DUCK GENERATOR)
 import { GET_TODOS } from './todoTypes';
 import { queries } from './todoQueries';
@@ -9,7 +9,6 @@ import useQuery from '../../../hooks/useQuery';
 function* getTodosReq(data) {
   return yield call(useQuery, queries.GET_TODOS, data);
 }
-
 
 // exportFuntion   (DONT DELETE THIS LINE: USED FOR BATTLECRY DUCK GENERATOR)
 export function* getTodos(action) {

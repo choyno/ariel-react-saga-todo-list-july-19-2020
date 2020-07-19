@@ -23,7 +23,7 @@ const TodoList = () => {
   },[ dispatch ]);
 
   return (
-    <div>
+    <div className="todos-list">
       <h1> MY TO DO LIST </h1>
       { process ? "LOADING....." : '' }
      <hr/>
