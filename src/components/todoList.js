@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-import {delay } from 'redux-saga/effects'
-
 import useTodo from '../hooks/useTodo';
 import { useDispatch } from 'react-redux';
 
@@ -14,7 +12,9 @@ const TodoList = () => {
   const [process, setProcess] = useState(processing);
 
   useEffect(() => {
-    setProcess(processing);
+    setTimeout(() => {
+      setProcess(processing);
+    }, 1000);
   },[ getTodosList, getTodos, processing ]);
 
   useEffect(() => {
