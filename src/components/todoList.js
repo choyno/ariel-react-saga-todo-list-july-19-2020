@@ -31,7 +31,7 @@ const TodoList = () => {
      <hr/>
       { !process && todos.map((todo) => (
         <div key={`${todo.id}`}>
-           ID: { todo.id } / TITLE:  { todo.title }
+            ID: { todo.id } / TITLE:  { todo.title } / DESCRIPTION: { todo.description }
           <hr/>
           <br/>
         </div>
