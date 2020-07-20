@@ -1,4 +1,5 @@
 // ImportActionType   (DONT DELETE THIS LINE: USED FOR BATTLECRY DUCK GENERATOR)
+import { CREATE_TODO } from './todoTypes';
 import { GET_TODOS } from './todoTypes';
 
 
@@ -12,15 +13,21 @@ const INITIAL_STATE = {
 export default function reducer(state = INITIAL_STATE, action = {}) {
   switch (action.type) {
     case GET_TODOS:
-      // Perform action
+    case CREATE_TODO:
       return state;
+    case `${CREATE_TODO}_SUCCESS`:
+      return {
+        todos: [...state.todos, action.payload],
+        processing: false,
+        updating: false
+      }
     case `${GET_TODOS}_SUCCESS`:
-      // Perform action
       return {
         todos: action.payload,
         processing: false,
         updating: false
       }
+    case `${CREATE_TODO}_FAIL`:
     case `${GET_TODOS}_FAIL`:
       // Perform action
       return state;

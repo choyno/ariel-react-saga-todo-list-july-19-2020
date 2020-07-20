@@ -1,9 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
+import useTodo from '../hooks/useTodo';
 const TodoForm = () => {
+
+  const { todos, createTodo } = useTodo();
+  const { processing } = todos;
+
+  const [process, setProcess] = useState(processing);
 
   const [todo, setTodo ] = useState({title: "", description: ""});
   const { title, description } = todo;
+
+  useEffect(() => {
+    console.log(processing);
+    setTimeout(() => {
+      setProcess(processing);
+    }, 1000);
+  },[todos, processing ]);
 
   const handleTodoItem = (key,value) => {
     setTodo({
@@ -15,12 +28,17 @@ const TodoForm = () => {
   const handleSubmitTodo = (e) => {
     e.preventDefault();
     if(title) {
+      setProcess(true);
+      createTodo({title: title, description: description});
+      setTodo({ title:'', description:''});
     }
   }
 
   return (
     <>
     <h3> TODO FORM</h3>
+
+    { process ? "LOADING....." : '' }
 
     <form className="todo-form" onSubmit={handleSubmitTodo}>
       <label className="todo-label"> Title </label>

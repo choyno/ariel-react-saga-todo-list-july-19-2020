@@ -11,7 +11,23 @@ const GET_TODOS = gql`
   }
 `
 
+const CREATE_TODO = gql`
+  mutation createTodo($title: String, $description: String) {
+ 		createTodo(	input: {
+      title: $title
+      description: $description
+    }){
+      todo {
+        id
+        title
+        description
+        isDeleted
+      }
+    }
+  }
+`
  export const queries = {
-   GET_TODOS
+   GET_TODOS,
+   CREATE_TODO
  }
 

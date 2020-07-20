@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import {
   getTodos,
+  createTodo,
 
 } from '../redux/modules/todo/todoActions';
 
@@ -17,6 +18,9 @@ export default () => {
     updating,
     getTodos(data){
       dispatch(getTodos(data));
+    },
+    createTodo(data){
+      dispatch(createTodo(data));
     },
   };
 }
